@@ -46,7 +46,7 @@ router.post(
 
     const payment = Payment.build({
       orderId,
-      stripId: charge.id,
+      stripeId: charge.id,
     });
     await payment.save();
 
