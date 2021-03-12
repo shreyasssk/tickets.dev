@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 interface PaymentAttrs {
   orderId: string;
-  stripId: string;
+  stripeId: string;
 }
 
 interface PaymentDoc extends mongoose.Document {
@@ -20,7 +20,7 @@ const paymentSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    stripId: {
+    stripeId: {
       type: String,
       required: true,
     },
