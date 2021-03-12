@@ -93,7 +93,7 @@ export class OrderDetailsComponent implements OnInit {
       .onSubmit(paymentUrl, paymentData)
       .subscribe((res) => {
         console.log(res);
-        this.router.navigate(['']).then(() => {
+        this.router.navigate(['/orders']).then(() => {
           window.location.reload();
         });
       });
