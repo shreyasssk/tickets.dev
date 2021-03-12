@@ -1,0 +1,29 @@
+<div class="container vertical-center">
+  <div class="row align-items-center">
+    <div class="col-6">
+      <div class="jumbotron" style="width: 20rem;">
+        <div class="card-body">
+          <h1 class="card-title">Title: {{ orderDetails.ticket.title }}</h1>
+          <p class="card-text">Price: &#8377;{{ orderDetails.ticket.price }}</p>
+          <p class="card-text">Status: <span
+              [ngStyle]="{'color': orderDetails.status === 'cancelled' ? 'red' : 'green' }">{{ orderDetails.status }}</span>
+          </p>
+          <p *ngIf="timeInterval !== 'Expired'" class="card-text">You have: {{ timeInterval }} to make the payment</p>
+          <p *ngIf="timeInterval === 'Expired'" class="card-text" style="color: red;"> Sorry Order has is expired!</p>
+          <form role="form" (ngSubmit)="onSubmit(f.value)" #f="ngForm">
+            <input type="hidden" ngModel="{{ orderDetails.ticket.price }}" name="price" />
+            <button *ngIf="timeInterval !== 'Expired'" type="submit" class="btn btn-default">Purchase</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div *ngIf="errors.length > 0" class="alert alert-danger" role="alert">
+    <strong class="display-4">Oops!</strong>
+    <div *ngFor="let error of errors">
+      <li *ngIf="errors.field === email"> {{ error.message }} </li>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="container">
+  <h1 class="display-1">My Orders</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <div *ngIf="loadedData.length === 0">
+        <p>You have currently 0 Orders!</p>
+        <p>Go buy some tickets to check their status here!</p>
+      </div>
+      <ng-container *ngFor="let order of loadedData">
+        <tr>
+          <td>{{ order.ticket.title }}</td>
+          <td>&#8377; {{ order.ticket.price }}</td>
+          <td> {{ order.status }} </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>

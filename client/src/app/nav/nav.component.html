@@ -1,0 +1,77 @@
+<!-- Navbar -->
+<nav class="navbar navbar-horizontal navbar-expand-lg navbar-dark bg-default">
+  <div class="container">
+    <a class="text-muted">
+      tickets.dev
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse"
+      aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse navbar-custom-collapse collapse" id="navbar-collapse">
+      <div class="navbar-collapse-header">
+        <div class="row">
+          <div class="col-6 collapse-brand">
+            <a>
+              <!-- <img src="../../assets/img/brand/blue.png"> -->
+              tickets.dev
+            </a>
+          </div>
+          <div class="col-6 collapse-close">
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse"
+              aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a [routerLink]="['']" class="nav-link">
+            <span class="nav-link-inner--text">Dashboard</span>
+          </a>
+        </li>
+        <ng-container *ngIf="loadedData === null">
+          <li class="nav-item">
+            <a [routerLink]="['/auth/signin']" class="nav-link">
+              <span class="nav-link-inner--text">Login</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a [routerLink]="['/auth/signup']" class="nav-link">
+              <span class="nav-link-inner--text">Register</span>
+            </a>
+          </li>
+        </ng-container>
+        <ng-container *ngIf="loadedData !== null">
+          <li class="nav-item">
+            <a [routerLink]="['/tickets/new']" class="nav-link">
+              <span class="nav-link-inner--text">Sell Ticket</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a [routerLink]="['/orders']" class="nav-link">
+              <span class="nav-link-inner--text">My Orders</span>
+            </a>
+          </li>
+        </ng-container>
+      </ul>
+      <hr class="d-lg-none" />
+      <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+        <div *ngIf="loadedData !== null">
+          <li class="nav-item d-none d-lg-block ml-lg-4">
+            <form (click)="onSubmit()">
+              <a class="btn btn-neutral btn-icon">
+                <!-- <span class="btn-inner--icon">
+                  <i class="fas fa-shopping-cart mr-2"></i>
+                </span> -->
+                <span class="nav-link-inner--text">Logout</span>
+              </a>
+            </form>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </div>
+</nav>
