@@ -19,7 +19,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Building Client
+      - name: Building Expiration Service
         run: |
           docker build -t shreyasssk/ticketing-expiration:latest ./server/expiration/
           docker build --cache-from shreyasssk/ticketing-expiration:latest -t shreyasssk/ticketing-expiration:$GITHUB_SHA ./server/expiration/

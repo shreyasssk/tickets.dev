@@ -19,7 +19,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Building Client
+      - name: Building Tickets Service
         run: |
           docker build -t shreyasssk/ticketing-client:latest ./client/
           docker build --cache-from shreyasssk/ticketing-client:latest -t shreyasssk/ticketing-client:$GITHUB_SHA ./client/

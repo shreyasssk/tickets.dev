@@ -6,7 +6,7 @@ on:
       - master
     paths:
       - 'server/auth/**'
-      
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,12 +18,12 @@ jobs:
           registry: docker.io
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      
-      - name: Building Client
+
+      - name: Building Auth Service
         run: |
           docker build -t shreyasssk/ticketing-auth:latest ./server/auth/
           docker build --cache-from shreyasssk/ticketing-auth:latest -t shreyasssk/ticketing-auth:$GITHUB_SHA ./server/auth/
-          
+
       - name: Deploying to Docker Registry
         run: |
           docker push shreyasssk/ticketing-auth:$GITHUB_SHA
