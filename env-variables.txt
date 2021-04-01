@@ -1,6 +1,0 @@
-// Auth //
-MONGO_URI='mongodb://localhost:27017/auth'
-JWT_KEY='dsfsfsdfs'
-
-// Orders //
-NATS_URL='http://nats-srv:4222'
